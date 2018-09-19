@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+    http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+  <flow-definition id="registration">
+
+      <start-node>register</start-node>
+
+      <view id="register">
+          <vdl-document>/registration/register-person.xhtml</vdl-document>
+      </view>
+      <view id="address">
+          <vdl-document>/registration/register-address.xhtml</vdl-document>
+      </view>
+
+      <flow-return id="end">
+          <from-outcome>/people.xhtml</from-outcome>
+      </flow-return>
+
+      <initializer>#{registrationFlowBean.prepare()}</initializer>
+      <finalizer>#{registrationFlowBean.save()}</finalizer>
+  </flow-definition>
+</faces-config>

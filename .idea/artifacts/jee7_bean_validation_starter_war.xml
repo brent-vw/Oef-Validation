@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="jee7-bean-validation-starter:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="jee7-bean-validation-starter.war">
+      <element id="artifact" artifact-name="jee7-bean-validation-starter:war exploded" />
+    </root>
+  </artifact>
+</component>

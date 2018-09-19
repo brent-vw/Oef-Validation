@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+        >
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="pageContent">
+            <h1>#{msgs['page.register-address.title']}</h1>
+            <h:outputText value="#{registrationFlowBean.person.firstName}"/> <!-- data from previous page -->
+            <h:outputText value="#{registrationFlowBean.person.lastName}"/>
+            <h:form>
+                <h:panelGroup id="streetGrp">
+                <div class="form-group #{not component.findComponent('street').valid and facesContext.validationFailed ? 'has-error' : ''}">
+                    <h:outputLabel for="street">#{msgs['page.register-address.street']}</h:outputLabel>
+                    <h:inputText id="street" value="#{registrationFlowBean.person.address.street}" styleClass="form-control">
+                        <f:ajax render="streetGrp" event="blur"/>
+                    </h:inputText>
+                    <h:message for="street" errorClass="control-label has-error"/>
+                </div>
+                </h:panelGroup>
+                <h:panelGroup id="numberGrp">
+                <div class="form-group #{not component.findComponent('number').valid and facesContext.validationFailed ? 'has-error' : ''}">
+                    <h:outputLabel for="number">#{msgs['page.register-address.number']}</h:outputLabel>
+                    <h:inputText id="number" value="#{registrationFlowBean.person.address.number}" styleClass="form-control">
+                        <f:ajax render="numberGrp" event="blur"/>
+                    </h:inputText>
+                    <h:message for="number" errorClass="control-label has-error"/>
+                </div>
+                </h:panelGroup>
+                <h:panelGroup id="postalCodeGrp">
+                <div class="form-group #{not component.findComponent('postalCode').valid and facesContext.validationFailed ? 'has-error' : ''}">
+                    <h:outputLabel for="postalCode">#{msgs['page.register-address.postalCode']}</h:outputLabel>
+                    <h:inputText id="postalCode" value="#{registrationFlowBean.person.address.postalCode}" styleClass="form-control">
+                        <f:ajax render="postalCodeGrp" event="blur"/>
+                    </h:inputText>
+                    <h:message for="postalCode" errorClass="control-label has-error"/>
+                </div>
+                </h:panelGroup>
+                <h:panelGroup id="cityGroup">
+                <div class="form-group #{not component.findComponent('city').valid and facesContext.validationFailed ? 'has-error' : ''}">
+                    <h:outputLabel for="city">#{msgs['page.register-address.city']}</h:outputLabel>
+                    <h:inputText id="city" value="#{registrationFlowBean.person.address.city}" styleClass="form-control">
+                        <f:ajax render="cityGroup" event="blur"/>
+                    </h:inputText>
+                    <h:message for="city" errorClass="control-label has-error"/>
+                </div>
+                </h:panelGroup>
+                <h:commandButton value="#{msgs['links.finish']}" action="end" styleClass="btn btn-primary"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
